@@ -8,13 +8,25 @@ define([
         BaseUrl: "http://community.lithium.com/restapi/vc/users/id/"
       },
       initialize: function() {
-        this.url = this.attributes.BaseUrl + this.id
-        console.log('initialize', this.attributes.BaseUrl);
+        this.url = this.attributes.BaseUrl + this.id + "/?xslt=json.xsl"
+        console.log('initialize', this.url);
+      },
+      parse: function(resp, xhr) {
+        var user = resp.response.user;
+        var lastVisit = new Date(user.last_visit_time.$).getTime();
+        var now = new Date().getTime();
+        var difference = now - lastVisit;
+        var imageId = user.profiles.profile[1].$.match(/image-id\/([A-Za-z0-9]+)/g)[0];
 
-        // if (this.has("PageUrl")) {
-        //   var pageShortName = this.get("PageUrl").split("/")[1];
-        //   this.url = Config.justgiving.url + Config.justgiving.apiKey + "/v1/fundraising/pages/" + pageShortName;
-        // } 
+
+        user.activity = {}
+        user.activity.days = Math.round(difference/86400000);
+        user.activity.hours = Math.round(difference/3600000);
+        user.activity.minutes = Math.round(difference/60000);
+
+        user.avatar = 'http://community.lithium.com/t5/image/serverpage/' + imageId + '/image-dimensions/128x72';
+
+        return user;
       }
     });
     return Profile;
