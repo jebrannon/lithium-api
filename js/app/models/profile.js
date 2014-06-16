@@ -5,7 +5,7 @@ define([
   ], function($, _, Backbone) {
     var Profile = Backbone.Model.extend({
       defaults: {
-        BaseUrl: "http://community.lithium.com/restapi/vc/users/id/"
+        BaseUrl: "http://community.eu.playstation.com/restapi/vc/users/id/"
       },
       initialize: function() {
         this.url = this.attributes.BaseUrl + this.id + "/?xslt=json.xsl"

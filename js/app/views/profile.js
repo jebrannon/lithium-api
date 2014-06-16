@@ -11,13 +11,12 @@ define([
 				"click": "open"
 			},
 			initialize: function() {
-				this.profile = new Profile({id: '177'});
+				this.profile = new Profile({id: '2908093'});
 			},
 			render: function() {
 				var that = this;
 				this.profile.fetch ({
 					success: function (e) {
-						console.log('success : ', that.profile.get('login').$, that.profile.get('activity'));
 						that.output();
 					}
 				});
