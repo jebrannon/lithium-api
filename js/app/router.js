@@ -10,7 +10,7 @@ define([
 				'*actions': 'index'
 			},
 			index: function() {
-				Profile.render();
+				Profile.render('54222');
 			}
 		});
 		var init = function() {

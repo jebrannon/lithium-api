@@ -1,24 +1,11 @@
 <!-- html/profile/details.html -->
-<div id="profileColumn" class="profile" >
-
-  <div class="row header">
-
-    <div class="col profile-image">
-      <img src="<%= profile.get('avatar') %>"/>
-    </div>
-
-    <div class="col goals">
-      <h2><%= profile.get('login').$ %></h2>
-
-      <% if (profile.get('activity').days > 0) { %>
-        <p><%= profile.get('activity').days %> days ago</p>
-      <% } else if (profile.get('activity').hours > 0) { %>
-        <p><%= profile.get('activity').hours %> hours ago</p>
-      <% } else { %>
-        <p><%= profile.get('activity').minutes %> minutes ago</p>
-      <% } %>
-
-    </div>
-
-  </div>
+<div class="details col" >
+  <h2><%= details.get('login').$ %></h2>
+  <% if (details.get('activity').days > 0) { %>
+  <p><%= details.get('activity').days %> days ago</p>
+  <% } else if (details.get('activity').hours > 0) { %>
+  <p><%= details.get('activity').hours %> hours ago</p>
+  <% } else { %>
+  <p><%= details.get('activity').minutes %> minutes ago</p>
+  <% } %>
 </div>
