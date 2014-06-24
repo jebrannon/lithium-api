@@ -46,7 +46,7 @@ define([
 				}
 			},
 			output: function () {
-				$('#loading').hide();
+				$(this.el).find('.loading').hide();
 				$(this.el).append(_.template(AvatarTemplate, {avatar: this._AVATAR}));
 				$(this.el).append(_.template(DetailsTemplate, {details: this._DETAILS}));
 				$(this.el).append(_.template(KudosTemplate, {kudos: this._KUDOS}));

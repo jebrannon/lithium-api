@@ -3,14 +3,16 @@ define([
 	'underscore',
 	'backbone',
 	'app/views/profile',
+	'app/views/posts',
 	],
-	function($, _, Backbone, Profile) {
+	function($, _, Backbone, Profile, Posts) {
 		var AppRouter = Backbone.Router.extend({
 			routes: {
 				'*actions': 'index'
 			},
 			index: function() {
-				Profile.render('54222');
+				Profile.render('225950');
+				Posts.render('225950');
 			}
 		});
 		var init = function() {

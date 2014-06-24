@@ -1,0 +1,10 @@
+<!-- html/posts/list.html -->
+<ul class="post-list">
+<% _.each(posts, function (post) { %>
+  <li class="post-item" <% if (post.get('image')) { %>style="background-image: url('<%= post.get('image') %>')"<% } %>>
+    <a href="<%= post.get('href') %>" title="<%= post.get('subject') %>">
+      <h2 class="subject"><%= post.get('subject') %></h3>
+    </a>
+  </li>
+<% }); %>
+</ul>

@@ -2,51 +2,42 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'app/models/details',
-  'text!html/profile/details.html',
-  ], function($, _, Backbone, Details, Avatar, Kudos, DetailsTemplate, AvatarTemplate, KudosTemplate) {
-    var profileView = Backbone.View.extend({
-      el: '#profile',
+  'app/collections/posts',
+  'text!html/posts/list.html',
+  ], function($, _, Backbone, PostsCollection, PostsTemplate) {
+    var postsView = Backbone.View.extend({
+      el: '#posts',
       events: {
         "click": "open"
       },
-      initialize: function() {
-        this._TOTAL_REQUEST = 3;
-        this._REQUESTS_COMPLETE = 0;
-      },
-      render: function(user) {
+      render: function (user) {
         var that = this;
-
-        //  Avatar image
-        this._AVATAR = new Avatar({id: user});
-        this._AVATAR.fetch ({
-          success: function () { that.dataHasLoaded() }
-        });
-
-        //  Profile details
-        this._DETAILS = new Details({id: user});
-        this._DETAILS.fetch ({
-          success: function () { that.dataHasLoaded() }
-        });
-
-        //  User 'kudos' rating
-        this._KUDOS = new Kudos({id: user});
-        this._KUDOS.fetch ({
-          success: function () { that.dataHasLoaded() }
+        this._POSTS = new PostsCollection(user);
+        this._POSTS.fetch ({
+          success: function () {
+            that.lookupAssociatedImages();
+          }
         });
       },
-      dataHasLoaded: function () {
-        this._REQUESTS_COMPLETE++;
-        if (this._REQUESTS_COMPLETE === this._TOTAL_REQUEST) {
-          this.output();
-        }
+      lookupAssociatedImages: function () {
+        var that = this;
+        var len = 0;
+        var total = this._POSTS.length;
+        this._POSTS.each(function(post) {
+          post.fetch({
+            success: function () {
+                len++;
+                if (len === total) {
+                  that.output();
+                }
+              }
+          });
+        });
       },
       output: function () {
-        $('#loading').hide();
-        $(this.el).append(_.template(AvatarTemplate, {avatar: this._AVATAR}));
-        $(this.el).append(_.template(DetailsTemplate, {details: this._DETAILS}));
-        $(this.el).append(_.template(KudosTemplate, {kudos: this._KUDOS}));
+        $(this.el).find('.loading').hide();
+        $(this.el).append(_.template(PostsTemplate, {posts: this._POSTS.models}));
       }
     });
-    return new profileView;
+    return new postsView;
   });

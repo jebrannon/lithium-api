@@ -1,8 +1,24 @@
 body {
-	margin: 20px;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	margin: 20px 20px 40px 20px;
 }
 
-#loading {
+li,
+ul,
+h1,
+h2 {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.header {
+	background-color: rgba(20, 130, 210, .75);
+	color: rgba(255, 255, 255, 1);
+	padding: 10px;
+}
+
+.loading {
 	background-image: url('../img/ajax-loader.gif');
 	background-position: center 0;
 	background-repeat: no-repeat;
@@ -10,7 +26,11 @@ body {
 	width: 200px;
 }
 
-#loading p {
+.green {
+	color: rgba(40, 190, 25, 1);
+}
+
+.loading p {
 	padding-top: 40px;
 }
 
@@ -23,6 +43,44 @@ body {
 	display: table-cell;	
 }
 
+#profile {
+	margin: 40px 0;
+	width: 50%;
+}
+
 #profile .col {
 	vertical-align: top;
+}
+
+#posts {
+	overflow: hidden;
+}
+
+#posts li {
+	background-size: cover;
+	display: block;
+	float: left;
+	font-size: 10px;
+	height: 200px;
+	margin: 0 10px 10px 0;
+	width: 200px;
+}
+
+#posts a {
+	background-color: rgba(20, 130, 210, .75);
+	color: rgba(255, 255, 255, .75);
+	display: block;
+	height: 100%;
+	text-decoration: none;
+	transition: all 200ms linear;
+	width: 100%;
+}
+
+#posts a:hover {
+	background-color: rgba(20, 130, 210, .4);
+	color: rgba(255, 255, 255, 1);
+}
+
+#posts h2 {
+	padding: 10px;
 }

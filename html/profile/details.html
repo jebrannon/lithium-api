@@ -1,11 +1,22 @@
 <!-- html/profile/details.html -->
-<div class="details col" >
+<div class="details col">
   <h2><%= details.get('login').$ %></h2>
+
   <% if (details.get('activity').days > 0) { %>
-  <p><%= details.get('activity').days %> days ago</p>
+
+  <p>Onine <%= details.get('activity').days %> days ago</p>
+
   <% } else if (details.get('activity').hours > 0) { %>
-  <p><%= details.get('activity').hours %> hours ago</p>
+
+  <p>Onine <%= details.get('activity').hours %> hours ago</p>
+
+  <% } else if (details.get('activity').minutes === 0) { %>
+
+  <p class="green">Onine</p>
+
   <% } else { %>
-  <p><%= details.get('activity').minutes %> minutes ago</p>
+
+  <p>Onine <%= details.get('activity').minutes %> minutes ago</p>
+
   <% } %>
 </div>
