@@ -1,0 +1,84 @@
+.index #aside {
+  display: none;
+}
+
+#aside {
+  overflow: hidden;
+  vertical-align: top;
+  width: 180px;
+}
+
+#aside img {
+  padding-bottom: 20px;
+}
+
+#aside h3 {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+#aside p {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+#aside .boards-list {
+  margin-top: -10px;
+}
+
+#aside .boards-list a {
+  text-decoration: none;
+}
+
+#aside .boards-list a.selected,
+#aside .boards-list a:hover {
+  opacity: .5;
+}
+
+.red-theme #aside .boards-list a {
+  color: rgba(210, 20, 20, .75);
+}
+.green-theme #aside .boards-list a {
+  color: rgba(90, 180, 20, .75);
+}
+
+#aside .boards-list a {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+#aside .boards-list a.selected{
+  cursor: default;
+  pointer-events: none;
+}
+
+#aside .board-item {
+  padding: 10px 10px 10px 0;
+}
+
+
+@media (max-width: 768px) {
+  #aside {
+    display: block;
+    width: 100%;
+  }
+
+  #aside img {
+    float: left;
+    padding-right: 20px;
+  }
+
+  #aside .boards-list {
+    padding: 0 0 20px 0;
+  }
+
+  #aside .board-item {
+    padding: 10px 10px 10px 15px;
+  }
+
+  #aside .boards-list a {
+    font-size: 16px;
+    line-height: 16px;
+  }
+}

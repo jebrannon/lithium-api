@@ -7,40 +7,43 @@ define([
   'text!html/profile/boards.html',
   ], function($, _, Backbone, PostsView, BoardsCollection, BoardsTemplate) {
     var boardsView = Backbone.View.extend({
-      el: '#profile',
-      events: {
-        "click": "open"
-      },
+      el: '#aside',
+      catId: false,
+      rendered: false,
       initialize: function() {
-
+        this._BOARDS = new BoardsCollection();
       },
       render: function(id) {
         var that = this;
-        this._BOARDS = new BoardsCollection();
-        this._BOARDS.request(id);
-        this._BOARDS.fetch ({
-          success: function () {
-            that.output();
-          }
-        });
-      },
-      open: function (event) {
-        var nodeName = event.target.nodeName.toLowerCase();
-        if (nodeName === 'a') {
-          console.log(event.target);
-          var anchors = $(this.el).find('.boards-list a');
 
-          //  Adjust list
-          anchors.removeClass('selected');
-          $(event.target).addClass('selected');
-
-          PostsView.render({url: event.target.href});
-          event.preventDefault();
+        //  Only reprint Board list if category has chnaged
+        if (this.catId !== id) {
+          this.catId = id;
+          this._BOARDS.request(id);
+          this._BOARDS.fetch ({
+            success: function () {
+              that.output();
+            }
+          });
         }
       },
       output: function () {
         $(this.el).empty();
         $(this.el).append(_.template(BoardsTemplate, {boards: this._BOARDS.models}));
+        //  Template ready event
+        if (!this.rendered) {
+          this.trigger("ready");
+          this.rendered = true;
+        }
+      },
+      setBoard: function (id) {
+        var anchors = $(this.el).find('.boards-list a');
+
+        //  Adjust menu
+        anchors.removeClass('selected');
+        if (id) {
+          $(this.el).find('#' + id).addClass('selected');
+        }
       }
     });
     return new boardsView;

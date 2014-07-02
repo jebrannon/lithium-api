@@ -6,11 +6,19 @@
   background-color: rgba(210, 20, 20, .75);
 }
 
+.green-theme #header .menu {
+  background-color: rgba(90, 180, 20, .75);
+}
+
 /*  -----  */
 
 #header h1 {
   font-size: 24px;
   line-height: 24px;
+}
+#header a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
 }
 
 #header .menu {
@@ -19,8 +27,7 @@
   transition: all 200ms linear;
 }
 
-#header .menu a,
-#header .menu h2 {
+#header .menu a {
   color: rgb(255, 255, 255);
   font-size: 14px;
   font-weight: 100;
@@ -29,14 +36,11 @@
 }
 
 #header .menu a:hover,
-#header .menu a:hover h2,
-#header .menu a.selected,
-#header .menu a.selected h2 {
+#header .menu a.selected {
   opacity: .5;
 }
 
-#header .menu a.selected,
-#header .menu h2 {
+#header .menu a.selected {
   pointer-events: none;
   cursor: default;
 }
@@ -66,8 +70,7 @@
     padding: 10px;
   }
 
-  #header .menu a,
-  #header .menu h2 {
+  #header .menu a {
     font-size: 16px;
     line-height: 16px;
   }

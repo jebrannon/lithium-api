@@ -56,6 +56,14 @@
   background-color: rgba(210, 20, 20, .4);
 }
 
+.green-theme #posts h3 {
+  background-color: rgba(90, 180, 20, .75);
+}
+
+.green-theme #posts a:hover h3 {
+  background-color: rgba(90, 180, 20, .4);
+}
+
 
 @media (min-width: 1024px) {
   #posts li {

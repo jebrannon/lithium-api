@@ -2,15 +2,30 @@ define([
   'jquery',
   'underscore',
   'backbone',
+  'app/config',
   'app/collections/posts',
   'text!html/posts/list.html',
-  ], function($, _, Backbone, PostsCollection, PostsTemplate) {
+  ], function($, _, Backbone, Config, PostsCollection, PostsTemplate) {
     var postsView = Backbone.View.extend({
       el: '#posts',
-      render: function (vars) {
+      initialize: function () {
+        this._POSTS = new PostsCollection();
+      },
+      render: function (o) {
         var that = this;
         this.reset();
-        this._POSTS = new PostsCollection(vars);
+
+        if (!o) {
+          this._POSTS.setUrl(Config.urlRoot + Config.query + Config.limit + '&xslt=json.xsl&callback=?');
+        }
+        else if (o.category) {
+          this._POSTS.setUrl(Config.urlRoot + 'categories/id/' + o.category + '/' + Config.query + Config.limit + '&xslt=json.xsl&callback=?');
+        }
+        else if (o.board) {
+          this._POSTS.setUrl(Config.urlRoot + 'boards/id/' + o.board + '/' + Config.query + Config.limit + '&xslt=json.xsl&callback=?');
+        }
+
+
         this._POSTS.fetch ({
           success: function () {
             that.lookupAssociatedImages();

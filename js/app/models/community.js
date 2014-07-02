@@ -2,10 +2,11 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  ], function($, _, Backbone) {
+  'app/config',
+  ], function($, _, Backbone, Config) {
     var Community = Backbone.Model.extend({
       initialize: function() {
-        this.url = "http://community.eu.playstation.com/restapi/vc?xslt=json.xsl&callback=?";
+        this.url = Config.urlRoot + "?xslt=json.xsl&callback=?";
       },
       parse: function(resp, xhr) {
         var o = {};

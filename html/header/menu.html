@@ -2,17 +2,14 @@
 <div class="menu row">
   <div class="categories col">
     <ul class="category-list">
-      <li class=""></li>
     <% _.each(categories, function (category) { %>
       <li class="category-item">
-        <a id="<%= category.get('id') %>" href="<%= category.get('feed') %>" title="<%= category.get('title') %>" data-app-select="category">
-          <h2 class="title"><%= category.get('title') %></h2>
-        </a>
+        <a id="<%= category.get('id') %>" href="/#/category/<%= category.get('id') %>" title="<%= category.get('title') %>"><%= category.get('title') %></a>
       </li>
     <% }); %>
     </ul>
   </div>
   <div class="users col">
-    <a href="#" title="Profile filters" data-app-select="users">Profiles</a>
+    <a href="/#/author" title="Autor filters">Authors</a>
   </div>
 </div>

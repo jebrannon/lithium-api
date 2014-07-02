@@ -2,15 +2,15 @@ define([
   'jquery',
   'underscore',
   'backbone',
+  'app/config',
   'app/models/board',
-  ], function($, _, Backbone, BoardModel) {
+  ], function($, _, Backbone, Config, BoardModel) {
     var Boards = Backbone.Collection.extend({
       model: BoardModel,
-      comparator: 'views',
-      urlRoot: 'http://community.eu.playstation.com/restapi/vc',
-      query: '/posts/recent?page_size=10&restapi.response_style=view&restapi.format_detail=full_list_element&xslt=json.xsl',
+      catId: false,
       request: function(id) {
-        this.url = this.urlRoot + "/categories/id/" + id + "/?xslt=json.xsl&callback=?";
+        this.catId = id;
+        this.url = Config.urlRoot + "/categories/id/" + this.catId + "/?xslt=json.xsl&callback=?";
       },
       parse: function(resp, xhr) {
         var that = this;
@@ -27,7 +27,7 @@ define([
       formatDataToFit: function (data) {
         var o = {};
         o['id'] = data.id.$;
-        o['feed'] = this.urlRoot + data.href + this.query + '&callback=?';
+        o['catId'] = this.catId;
         o['title'] = data.title.$;
         return o;
       }

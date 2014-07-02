@@ -2,15 +2,15 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  ], function($, _, Backbone) {
+  'app/config',
+  ], function($, _, Backbone, Config) {
     var Post = Backbone.Model.extend({
       defaults: {
-        urlRoot: 'http://community.eu.playstation.com/restapi/vc/messages/id/',
         image: null,
         href: null
       },
       initialize: function() {
-        this.url = this.get('urlRoot') + this.get('id') + '/images?xslt=json.xsl&callback=?';
+        this.url = Config.urlRoot + 'messages/id/' + this.get('id') + '/images?xslt=json.xsl&callback=?';
       },
       parse: function (resp) {
 
