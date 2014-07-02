@@ -1,21 +1,18 @@
 body {
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	margin: 20px 20px 40px 20px;
+	
 }
 
+p,
 li,
 ul,
 h1,
-h2 {
+h2,
+h3 {
+	line-height: 0;
 	list-style: none;
-	padding: 0;
 	margin: 0;
-}
-
-.header {
-	background-color: rgba(20, 130, 210, .75);
-	color: rgba(255, 255, 255, 1);
-	padding: 10px;
+	padding: 0;
 }
 
 .loading {
@@ -26,11 +23,9 @@ h2 {
 	width: 200px;
 }
 
-.green {
-	color: rgba(40, 190, 25, 1);
-}
-
 .loading p {
+	font-size: 12px;
+	line-height: 16px;
 	padding-top: 40px;
 }
 
@@ -43,44 +38,15 @@ h2 {
 	display: table-cell;	
 }
 
-#profile {
-	margin: 40px 0;
-	width: 50%;
+@media (min-width: 1200px) {
+  body {
+    margin: 20px auto 40px auto;
+    width: 1200px;
+  }
 }
 
-#profile .col {
-	vertical-align: top;
-}
-
-#posts {
-	overflow: hidden;
-}
-
-#posts li {
-	background-size: cover;
-	display: block;
-	float: left;
-	font-size: 10px;
-	height: 200px;
-	margin: 0 10px 10px 0;
-	width: 200px;
-}
-
-#posts a {
-	background-color: rgba(20, 130, 210, .75);
-	color: rgba(255, 255, 255, .75);
-	display: block;
-	height: 100%;
-	text-decoration: none;
-	transition: all 200ms linear;
-	width: 100%;
-}
-
-#posts a:hover {
-	background-color: rgba(20, 130, 210, .4);
-	color: rgba(255, 255, 255, 1);
-}
-
-#posts h2 {
-	padding: 10px;
+@media (max-width: 1200px) {
+  body {
+    margin: 20px 20px 40px 20px;
+  }
 }

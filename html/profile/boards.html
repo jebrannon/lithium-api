@@ -1,0 +1,10 @@
+<!-- html/profile/boards.html -->
+<ul class="boards-list">
+  <% _.each(boards, function (board) { %>
+    <li class="board-item">
+      <a id="<%= board.get('id') %>" href="<%= board.get('feed') %>" title="<%= board.get('title') %>">
+        <h3 class="title"><%= board.get('title') %></h3>
+      </a>
+    </li>
+  <% }); %>
+</ul>

@@ -11,9 +11,6 @@ define([
 	], function($, _, Backbone, Details, Avatar, Kudos, DetailsTemplate, AvatarTemplate, KudosTemplate) {
 		var profileView = Backbone.View.extend({
 			el: '#profile',
-			events: {
-				"click": "open"
-			},
 			initialize: function() {
 				this._TOTAL_REQUEST = 3;
 				this._REQUESTS_COMPLETE = 0;
@@ -24,19 +21,19 @@ define([
 				//  Avatar image
 				this._AVATAR = new Avatar({id: user});
 				this._AVATAR.fetch ({
-					success: function () { that.dataHasLoaded() }
+					success: function () {that.dataHasLoaded()}
 				});
 
 				//  Profile details
 				this._DETAILS = new Details({id: user});
 				this._DETAILS.fetch ({
-					success: function () { that.dataHasLoaded() }
+					success: function () {that.dataHasLoaded()}
 				});
 
 				//  User 'kudos' rating
 				this._KUDOS = new Kudos({id: user});
 				this._KUDOS.fetch ({
-					success: function () { that.dataHasLoaded() }
+					success: function () {that.dataHasLoaded()}
 				});
 			},
 			dataHasLoaded: function () {

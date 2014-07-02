@@ -10,15 +10,6 @@ define([
       initialize: function() {
         this.url = this.get('urlRoot') + this.get('id') + "/kudos/received/count?xslt=json.xsl&callback=?";
       },
-      sync: function(method, model, options) {
-        var params = _.extend({
-          type: 'GET',
-          dataType: 'jsonp',
-          url: this.url,
-          processData: false
-        }, options);
-        return $.ajax(params);
-      },
       parse: function(resp, xhr) {
         return resp.response;
       }

@@ -1,0 +1,74 @@
+.blue-theme #header .menu {
+  background-color: rgba(20, 130, 210, .75);
+}
+
+.red-theme #header .menu {
+  background-color: rgba(210, 20, 20, .75);
+}
+
+/*  -----  */
+
+#header h1 {
+  font-size: 24px;
+  line-height: 24px;
+}
+
+#header .menu {
+  border-radius: 3px;
+  margin: 20px 0 0 0;
+  transition: all 200ms linear;
+}
+
+#header .menu a,
+#header .menu h2 {
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 14px;
+  text-decoration: none;
+}
+
+#header .menu a:hover,
+#header .menu a:hover h2,
+#header .menu a.selected,
+#header .menu a.selected h2 {
+  opacity: .5;
+}
+
+#header .menu a.selected,
+#header .menu h2 {
+  pointer-events: none;
+  cursor: default;
+}
+
+#header .categories,
+#header .users {
+  padding: 5px;
+}
+
+#header .users {
+  text-align: right;
+}
+
+#header .category-item,
+#header .users a {
+  display: inline-block;
+  padding: 5px;
+}
+
+#header .users a {
+  padding-left: 40px;
+}
+
+@media (max-width: 768px) {
+  #header .category-item {
+    display: block;
+    padding: 10px;
+  }
+
+  #header .menu a,
+  #header .menu h2 {
+    font-size: 16px;
+    line-height: 16px;
+  }
+}

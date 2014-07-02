@@ -1,10 +1,12 @@
 <!-- html/posts/list.html -->
-<ul class="post-list">
+<ul class="post-list"><!--
 <% _.each(posts, function (post) { %>
-  <li class="post-item" <% if (post.get('image')) { %>style="background-image: url('<%= post.get('image') %>')"<% } %>>
-    <a href="<%= post.get('href') %>" title="<%= post.get('subject') %>">
-      <h2 class="subject"><%= post.get('subject') %></h3>
+  --><li class="post-item">
+    <a href="<%= post.get('href') %>" title="<%= post.get('subject') %>" <% if (post.get('image')) { %>style="background-image: url('<%= post.get('image') %>')"<% } %>>
+      <div class="tile row">
+        <h3 class="subject col"><%= post.get('subject') %></h3>
+      </div>
     </a>
-  </li>
+  </li><!--
 <% }); %>
-</ul>
+--></ul>

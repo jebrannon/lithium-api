@@ -1,0 +1,84 @@
+#posts {
+  overflow: hidden;
+}
+
+#posts li {
+  display: inline-block;
+  font-size: 10px;
+  height: 200px;
+  overflow: hidden;
+}
+
+#posts a {
+  background-size: cover;
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 1);
+  display: block;
+  height: 190px;
+  margin: 0 0 0 10px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+#posts a:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+#posts .tile {
+  height: 100%;
+}
+
+#posts h3 {
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 20px;
+  padding: 0 20px;
+  text-align: center;
+  transition: all 200ms linear;
+  vertical-align: middle;
+}
+
+/*  Themes  */
+
+.blue-theme #posts h3 {
+  background-color: rgba(20, 130, 210, .75);
+}
+
+.blue-theme #posts a:hover h3 {
+  background-color: rgba(20, 130, 210, .4);
+}
+
+.red-theme #posts h3 {
+  background-color: rgba(210, 20, 20, .75);
+}
+
+.red-theme #posts a:hover h3 {
+  background-color: rgba(210, 20, 20, .4);
+}
+
+
+@media (min-width: 1024px) {
+  #posts li {
+    width: 25%;
+  }
+}
+
+@media (max-width: 1024px) {
+  #posts li {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  #posts {
+    display: block;
+    clear: both;
+  }
+  #posts li {
+    width: 100%;
+  }
+
+  #posts a {
+    margin: 0;
+  }
+}

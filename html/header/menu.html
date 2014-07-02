@@ -1,0 +1,18 @@
+<!-- html/header/menu.html -->
+<div class="menu row">
+  <div class="categories col">
+    <ul class="category-list">
+      <li class=""></li>
+    <% _.each(categories, function (category) { %>
+      <li class="category-item">
+        <a id="<%= category.get('id') %>" href="<%= category.get('feed') %>" title="<%= category.get('title') %>" data-app-select="category">
+          <h2 class="title"><%= category.get('title') %></h2>
+        </a>
+      </li>
+    <% }); %>
+    </ul>
+  </div>
+  <div class="users col">
+    <a href="#" title="Profile filters" data-app-select="users">Profiles</a>
+  </div>
+</div>

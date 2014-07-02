@@ -7,9 +7,14 @@ define([
 		var Posts = Backbone.Collection.extend({
 			model: PostModel,
 			comparator: 'views',
-			urlRoot: 'http://community.eu.playstation.com/restapi/vc/search/messages?q=is_root:true&sort_by=-replies&rangeTime=1M&restapi.response_style=view&restapi.format_detail=full_list_element&author_id=',
-			initialize: function(user) {
-				this.url = this.urlRoot + user + "&xslt=json.xsl&callback=?";
+			urlRoot: 'http://community.eu.playstation.com/restapi/vc/search/messages?q=is_root:true&sort_by=-replies&rangeTime=1M&restapi.response_style=view&restapi.format_detail=full_list_element&page_size=10&author_id=',
+			initialize: function(vars) {
+				if (vars.user) {
+					this.url = this.urlRoot + vars.user + "&xslt=json.xsl&callback=?";
+				}
+				else {
+					this.url = vars.url;
+				}
 			},
 	    parse: function(resp, xhr) {
 	    	var that = this;

@@ -7,12 +7,10 @@ define([
   ], function($, _, Backbone, PostsCollection, PostsTemplate) {
     var postsView = Backbone.View.extend({
       el: '#posts',
-      events: {
-        "click": "open"
-      },
-      render: function (user) {
+      render: function (vars) {
         var that = this;
-        this._POSTS = new PostsCollection(user);
+        this.reset();
+        this._POSTS = new PostsCollection(vars);
         this._POSTS.fetch ({
           success: function () {
             that.lookupAssociatedImages();
@@ -37,6 +35,10 @@ define([
       output: function () {
         $(this.el).find('.loading').hide();
         $(this.el).append(_.template(PostsTemplate, {posts: this._POSTS.models}));
+      },
+      reset: function () {
+        $(this.el).find('.loading').show();
+        $(this.el).find('.post-list').remove();
       }
     });
     return new postsView;
